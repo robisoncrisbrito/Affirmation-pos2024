@@ -21,5 +21,7 @@ class MainActivity : AppCompatActivity() {
 
         recyclerView.adapter = ItemAdapter( this, myDataset )
 
+        recyclerView.setHasFixedSize( true )
+
     }
 }

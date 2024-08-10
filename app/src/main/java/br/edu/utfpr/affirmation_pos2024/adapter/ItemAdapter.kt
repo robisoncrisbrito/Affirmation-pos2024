@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.edu.utfpr.affirmation_pos2024.R
@@ -13,6 +14,7 @@ class ItemAdapter (val context: Context, val dataset : List<Affirmation>) : Recy
 
     class ItemViewHolder(val view : View) : RecyclerView.ViewHolder(view) {
         val textView = view.findViewById<TextView>( R.id.item_title )
+        val imageView = view.findViewById<ImageView>( R.id.item_image )
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -27,6 +29,7 @@ class ItemAdapter (val context: Context, val dataset : List<Affirmation>) : Recy
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item: Affirmation = dataset [position]
         holder.textView.text = context.resources.getString( item.stringResourceId )
+        holder.imageView.setImageResource( item.imageResourceId )
     }
 
 }
