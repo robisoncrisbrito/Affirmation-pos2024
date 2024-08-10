@@ -6,6 +6,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.RecyclerView
+import br.edu.utfpr.affirmation_pos2024.adapter.ItemAdapter
 import br.edu.utfpr.affirmation_pos2024.data.Datasource
 
 class MainActivity : AppCompatActivity() {
@@ -14,9 +16,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val textView = findViewById<TextView>( R.id.tvRegistros )
+        val recyclerView = findViewById<RecyclerView>( R.id.recycler_view )
+        val myDataset = Datasource().loadAffirmation()
 
-        textView.text = Datasource().loadAffirmation().size.toString()
+        recyclerView.adapter = ItemAdapter( this, myDataset )
 
     }
 }
